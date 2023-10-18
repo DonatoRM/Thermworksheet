@@ -1,0 +1,144 @@
+DELETE http://localhost:80/clients
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "id": 3
+}
+
+###
+DELETE http://localhost:80/clients
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 3
+}
+
+###
+DELETE http://localhost:80/countries
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/provinces
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/municipalities
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/installations
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 2
+}
+
+###
+DELETE http://localhost:80/locations
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1
+}
+
+###
+DELETE http://localhost:80/positions
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1
+}
+
+###
+DELETE http://localhost:80/elements
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 'ct'
+}
+
+###
+DELETE http://localhost:80/defects
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1
+}
+
+###
+DELETE http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4
+}
+
+###
+DELETE http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "username": "donatorm"
+}
+
+###
+DELETE http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "username": "donatorm"
+}
+
+###
+DELETE http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "username": "donatorm"
+}
+
+###

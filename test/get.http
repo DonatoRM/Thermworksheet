@@ -1,0 +1,185 @@
+GET http://localhost:80/clients
+Accept: application/json
+
+###
+GET http://localhost:80/clients
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/clients
+Accept: application/json
+Authorization: Basic client client
+
+###
+GET http://localhost:80/clients
+Accept: application/json
+Authorization: Basic boss boss
+
+###
+GET http://localhost:80/clients?id=2
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/clients?id=2&page=1&limit=2
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/clients?id=2&686*5limit=2
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/clients?id=2&page=1
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/countries
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/countries?id=2
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/countries?name=españa
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/provinces
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/provinces?id=36
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/provinces?name=pontevedra
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+
+GET http://localhost:80/municipalities?page=5&limit=5
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/municipalities?id=5326
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/municipalities?name=vigo
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/municipalities?province=36
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/installations
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/installations?name=pintura
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/installations?client=1
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/locations
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/locations?id=1
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/locations?installation=1
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/positions
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/positions?name=armario%20de%20lacas+01
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/positions?element=sg
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/elements
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/elements?id=nc
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/defects
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/defects?date=2023-10-08
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/roles
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/roles
+Accept: application/json
+Authorization: Basic client client
+
+###
+GET http://localhost:80/roles
+Accept: application/json
+Authorization: Basic boss boss
+
+###
+GET http://localhost:80/users
+Accept: application/json
+Authorization: Basic operator operator
+
+###
+GET http://localhost:80/users
+Accept: application/json
+Authorization: Basic client client
+
+###
+GET http://localhost:80/users
+Accept: application/json
+Authorization: Basic boss boss
+
+###

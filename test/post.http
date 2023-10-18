@@ -1,0 +1,244 @@
+POST http://localhost:80/clients
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "GKN Driveline Vigo",
+  "address": "Zona Franca s/n",
+  "cp": "36210",
+  "country": 1,
+  "province": 36,
+  "municipality": 5326,
+  "location": "Vigo",
+  "phone": "986111111",
+  "email": "info@gkn.com"
+}
+
+###
+POST http://localhost:80/countries
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Francia"
+}
+
+###
+POST http://localhost:80/provinces
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "París",
+  "country": 4
+}
+
+###
+POST http://localhost:80/municipalities
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Notredame",
+  "province": 74
+}
+
+###
+
+POST http://localhost:80/installations
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Pintura",
+  "client": 1
+}
+
+###
+POST http://localhost:80/installations
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Embutición",
+  "client": 1
+}
+
+###
+POST http://localhost:80/locations
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Nivel +15 - Lacas 01",
+  "columns": "row 1 - col 1 - row 1 - col 2",
+  "installation": 1
+}
+
+###
+POST http://localhost:80/locations
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Línea de Prensas 02",
+  "columns": "row 1 - col 1 - row 1 - col 2",
+  "installation": 2
+}
+
+###
+POST http://localhost:80/positions
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Armario de Lacas 01",
+  "element": "SG",
+  "point": "Engastado del terminal del Seccionador General SG1",
+  "type": "E",
+  "fase": "Superior Central - S",
+  "voltage": 0.4,
+  "location": 1
+}
+
+###
+POST http://localhost:80/positions
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "name": "Armario de Autómata Prensa 23",
+  "element": "CT",
+  "point": "Defecto interno",
+  "type": "I",
+  "fase": "Interior",
+  "voltage": 0.4,
+  "location": 2
+}
+
+###
+POST http://localhost:80/elements
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "id": "KK",
+  "name": "Prueba de Elemento"
+}
+
+###
+###
+POST http://localhost:80/defects
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "date": "2023-10-09",
+  "wind": 1,
+  "emissivity": 0.95,
+  "point_temperature": 50.5,
+  "reference_temperature": 37,
+  "room_temperature": 25.1,
+  "reflected_apparent_temperature": 26.5,
+  "maximum_current": 1.5,
+  "current": 1.2,
+  "feedback": "Seccionador quemado y aviso realizado en la anterior inspección",
+  "thermogram": null,
+  "photo": null,
+  "position": 1
+}
+
+###
+###
+POST http://localhost:80/defects
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "date": "2023-10-10",
+  "wind": 1,
+  "emissivity": 0.95,
+  "point_temperature": 90.5,
+  "reference_temperature": 38,
+  "room_temperature": 25.1,
+  "reflected_apparent_temperature": 26.5,
+  "maximum_current": 1.5,
+  "current": 1.2,
+  "feedback": "Defecto interno del contactor",
+  "thermogram": null,
+  "photo": null,
+  "position": 2
+}
+
+###
+POST http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "rol": "prueba"
+}
+
+###
+POST http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "rol": "prueba"
+}
+
+###
+POST http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "rol": "prueba"
+}
+
+###
+POST http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "username": "donato",
+  "password": "donato",
+  "rol": 1
+}
+
+###
+POST http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "username": "donato",
+  "password": "donato",
+  "rol": 1
+}
+
+###
+POST http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "username": "donato",
+  "password": "donato",
+  "rol": 1
+}
+
+###
+POST http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "username": "donatorm",
+  "password": "donatorm",
+  "rol": 2
+}
+
+###

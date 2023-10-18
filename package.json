@@ -1,6 +1,7 @@
 {
   "name": "htdocs",
   "version": "0.1.0",
+  "author": "Donato Ramos Martínez",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,12 +10,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "13.5.5"
+    "next": "13.5.5",
+    "react": "18",
+    "react-dom": "18"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "13.5.5"
+    "eslint-config-next": "13.5.5",
+    "eslint-config-prettier": "9.0.0",
+    "prettier": "3.0.3"
   }
 }

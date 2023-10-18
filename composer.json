@@ -1,0 +1,26 @@
+{
+  "name": "donatorm/backend",
+  "description": "Project Backend",
+  "type": "project",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "Api\\": "api/",
+      "Models\\": "api/Models",
+      "Models\\Base\\": "api/Models/Base",
+      "Helpers\\": "api/Helpers",
+      "Controllers\\": "api/Controllers"
+    }
+  },
+  "authors": [
+    {
+      "name": "DonatoRM",
+      "email": "donatoramos@hotmail.com"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.5",
+    "monolog/monolog": "^3.4"
+  }
+}

@@ -1,0 +1,154 @@
+PUT http://localhost:80/clients
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1,
+  "email": "nombre.apellidos@mpsa.com",
+  "phone": "986112234"
+}
+
+###
+
+PUT http://localhost:80/countries
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4,
+  "name": "Alemania"
+}
+
+###
+PUT http://localhost:80/provinces
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 74,
+  "name": "París - Province"
+}
+
+###
+PUT http://localhost:80/municipalities
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 8428,
+  "name": "Campos Elisios"
+}
+
+###
+PUT http://localhost:80/installations
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1,
+  "name": "Pintura"
+}
+
+###
+PUT http://localhost:80/locations
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1,
+  "columns": "row 5 - col 8"
+}
+
+###
+PUT http://localhost:80/positions
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1,
+  "name": "Cabina de Lacas 01 - Armario de Potencia Grupo 1"
+}
+
+###
+
+PUT http://localhost:80/elements
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": "nc",
+  "name": "No contemplado"
+}
+
+###
+PUT http://localhost:80/defects
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 1,
+  "thermogram": "IR_0512.jpg"
+}
+
+###
+PUT http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "id": 4,
+  "rol": "Prueba"
+}
+
+###
+PUT http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "id": 4,
+  "rol": "Prueba"
+}
+
+###
+PUT http://localhost:80/roles
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "id": 4,
+  "rol": "Prueba"
+}
+
+###
+
+PUT http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic operator operator
+
+{
+  "username": "donato",
+  "password": "donatorm"
+}
+
+###
+PUT http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic client client
+
+{
+  "username": "donato",
+  "password": "donatorm"
+}
+
+###
+PUT http://localhost:80/users
+Content-Type: application/json
+Authorization: Basic boss boss
+
+{
+  "username": "donato",
+  "password": "donatorm"
+}
+
+###
