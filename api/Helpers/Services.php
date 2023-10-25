@@ -16,6 +16,11 @@ class Services
      */
     public static function login(): int
     {
+        if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            $ha=base64_decode(substr($_SERVER('HTTP_AUTHORIZATION'),6));
+            list($_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW'])=explode(':',$ha);
+            unset($ha);
+        }
         if (!isset($_SERVER['PHP_AUTH_USER'])) {
             header("WWW-Authenticate: Basic realm='Private data'");
             header("HTTP/1.0 401 Unauthorized");
@@ -27,8 +32,14 @@ class Services
             Logs::logger('Usuario no registrado', 'warning');
             header("HTTP/1.0 401 Unauthorized");
             die('Sorry. Incorrect Credentials');
-        };
+        }
         return $role;
+    }
+    public static function cors():void {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: Origin,Authorization,X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Allow: GET, POST, PUT, DELETE");
     }
     /**
      * Método que lanza un error 404 si no está definido el Controller

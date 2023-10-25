@@ -1,6 +1,5 @@
 'use client';
-import styles from './page.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuthContext } from '@/contexts/authContext';
 import { useRouter } from 'next/navigation';
 
@@ -11,14 +10,13 @@ const Home = () => {
 	const { login } = useAuthContext();
 	const handleLoginSubmit = async event => {
 		event.preventDefault();
-		const response = await fetch('http://localhost/clients', {
-			mode: 'no-cors',
+		const response = await fetch('http://localhost', {
 			// body: JSON.stringify({
 			// 	username: username,
 			// 	password: password
 			// })
 			header: {
-				Authorization: `Basic ${username}:${password}`
+				Authorization: 'Basic ' + btoa(username + ':' + password)
 			}
 		});
 		if (!response.ok) {

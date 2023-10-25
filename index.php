@@ -8,5 +8,6 @@ use Dotenv\Dotenv;
 $dotEnv = Dotenv::createImmutable(__DIR__);
 $dotEnv->safeLoad();
 
+Services::cors();
 $htmlRequest = new PageController(Services::login());
 $htmlRequest->init();
