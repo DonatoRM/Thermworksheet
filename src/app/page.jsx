@@ -11,11 +11,7 @@ const Home = () => {
 	const handleLoginSubmit = async event => {
 		event.preventDefault();
 		const response = await fetch('http://localhost', {
-			// body: JSON.stringify({
-			// 	username: username,
-			// 	password: password
-			// })
-			header: {
+			headers: {
 				Authorization: 'Basic ' + btoa(username + ':' + password)
 			}
 		});

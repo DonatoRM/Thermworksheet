@@ -24,7 +24,6 @@ class PageController extends BaseAction
      */
     public function init(): void
     {
-        $this->method = $_SERVER['REQUEST_METHOD'];
         if ($this->model === '') {
             echo $this->role;
         } else {
