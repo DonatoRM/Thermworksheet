@@ -7,15 +7,17 @@ use Api\Helpers\Services;
 
 class PageController extends BaseAction
 {
-    private string $role;
+    private int $role;
+    private array $arrayAuth;
     /**
      * Class constructor
      * @param string $role
      */
-    public function __construct(string $role)
+    public function __construct(array $arrayAuth)
     {
         parent::__construct();
-        $this->role = $role;
+        $this->role = $arrayAuth['role'];
+        $this->arrayAuth=$arrayAuth;
     }
 
     /**
@@ -25,7 +27,7 @@ class PageController extends BaseAction
     public function init(): void
     {
         if ($this->model === '') {
-            echo $this->role;
+            echo json_encode($this->arrayAuth);
         } else {
             switch ($this->method) {
                 case 'GET':

@@ -21,6 +21,7 @@
   "require": {
     "ext-pdo": "*",
     "vlucas/phpdotenv": "^5.5",
-    "monolog/monolog": "^3.4"
+    "monolog/monolog": "^3.4",
+    "firebase/php-jwt": "^6.9"
   }
 }

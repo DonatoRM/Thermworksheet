@@ -12,6 +12,8 @@ const Home = () => {
 		event.preventDefault();
 		const response = await fetch('http://localhost', {
 			headers: {
+				// Authorization:
+				// 	'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiaWF0IjoxNjk4MzQyMTA0LCJuYmYiOjE2OTgzNDIxMDQsImV4cCI6MTY5ODM0NTcwNCwidXNlcm5hbWUiOiJib3NzIiwicGFzc3dvcmQiOiJib3NzIn0.vODHHejvKSoY32XqKy2NbtaApaLT91zvmgWj-tkhgN8'
 				Authorization: 'Basic ' + btoa(username + ':' + password)
 			}
 		});
