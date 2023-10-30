@@ -96,19 +96,9 @@ class Services
      * Método que lanza un error 404 si no está definido el Controller
      * @return void
      */
-    #[NoReturn] public static function undefinedController(): void
+    #[NoReturn] public static function undefinedController(): void // 1
     {
         Logs::logger('Acceso a controlador erróneo', 'warning');
-        header("HTTP/1.0 404 Not Found");
-        die('Sorry. Page not found');
-    }
-    /**
-     * Método que lanza un error 404 si no está definido la Función a ejecutar
-     * @return void
-     */
-    #[NoReturn] public static function undefinedFunction(): void
-    {
-        Logs::logger('Acceso a función errónea', 'warning');
         header("HTTP/1.0 404 Not Found");
         die('Sorry. Page not found');
     }
@@ -116,7 +106,7 @@ class Services
      * Método que lanza un error 404 si no está definido el Método a ejecutar
      * @return void
      */
-    #[NoReturn] public static function undefinedMethod(): void
+    #[NoReturn] public static function undefinedMethod(): void // 3
     {
         Logs::logger('Acceso a método erróneo', 'warning');
         header("HTTP/1.0 404 Not Found");
@@ -126,7 +116,7 @@ class Services
      * Método que lanza un error 400 si no existe la acción
      * @return void
      */
-    #[NoReturn] public static function actionMethod(): void
+    #[NoReturn] public static function actionMethod(): void // 4
     {
         header("HTTP/1.0 400 Bad request");
         die('Sorry. This request is not available');
@@ -135,7 +125,7 @@ class Services
      * Método que lanza un error 404 si el servicio es erróneo
      * @return void
      */
-    #[NoReturn] public static function servicesMethod(): void
+    #[NoReturn] public static function servicesMethod(): void // 5
     {
         Logs::logger('Acceso a servicio erróneo', 'warning');
         header("HTTP/1.0 404 Not Found");
@@ -145,7 +135,7 @@ class Services
      * Método que lanza un 201 si la operación es correcta
      * @return void
      */
-    #[NoReturn] public static function insertionOK(): void
+    #[NoReturn] public static function insertionOK(): void // 6
     {
         header("HTTP/1.0 201 Created");
         echo('Congratulations. The operation was successful');
@@ -154,7 +144,7 @@ class Services
      * Método que lanza un error 400 si existe un error indefinido
      * @return void
      */
-    #[NoReturn] public static function undefinedError(): void
+    #[NoReturn] public static function undefinedError(): void // 7
     {
         header("HTTP/1.0 400 Bad request");
         die('Sorry. Wrong query');
@@ -163,7 +153,7 @@ class Services
      * Método que lanza un error 401 si no está permitido el acceso
      * @return void
      */
-    #[NoReturn] public static function unauthorizedAccess(): void
+    #[NoReturn] public static function unauthorizedAccess(): void // 8
     {
         Logs::logger('Usuario no tiene acceso', 'warning');
         header("HTTP/1.0 401 Unauthorized");

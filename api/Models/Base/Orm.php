@@ -110,6 +110,7 @@ class Orm extends Connection
             $rows = $res['COUNT(*)'];
             $stmt = null;
             if ($limit !== 0) $pages = ceil($rows / $limit);
+            else $pages = 1;
             if ($page === null && $limit === 0) {
                 $page = 1;
                 $limit = $rows;
@@ -178,6 +179,7 @@ class Orm extends Connection
                         if ($this->checkIfIdExists($dataObject)) Services::undefinedError();
                         $dataObject->password = $this->getHashFormPassword($dataObject->password);
                     }
+                    $this->connection->beginTransaction();
                     $sql = "INSERT INTO $this->table(";
                     foreach ($dataObject as $key => $value) {
                         $sql .= "$key,";
@@ -194,10 +196,12 @@ class Orm extends Connection
                         $stmt->bindValue(":$key", $value);
                     }
                     $stmt->execute();
+                    $this->connection->commit();
                     Services::insertionOK();
 
                 } catch (PDOException $ex) {
                     Logs::logger('Error al insertar en la BD', 'debug');
+                    $this->connection->rollBack();
                     die("Failed to insert database record. Message: " . $ex->getMessage());
                 }
             }
@@ -248,6 +252,7 @@ class Orm extends Connection
                     if ($this->role === 3 && $this->table === 'users') {
                         if (isset($dataObject->password)) $dataObject->password = $this->getHashFormPassword($dataObject->password);
                     }
+                    $this->connection->beginTransaction();
                     $sql = "UPDATE $this->table SET ";
                     foreach ($dataObject as $key => $value) {
                         if ($key !== 'id' && $key !== 'username') $sql .= "$key=:$key,";
@@ -263,9 +268,11 @@ class Orm extends Connection
                         $stmt->bindValue(":$key", "$value", PDO::PARAM_STR);
                     }
                     $stmt->execute();
+                    $this->connection->commit();
                     Services::insertionOK();
                 } catch (PDOException $ex) {
                     Logs::logger('Error al actualizar en la BD', 'debug');
+                    $this->connection->rollBack();
                     die("Failed to update database record. Message: " . $ex->getMessage());
                 }
             }
@@ -295,6 +302,7 @@ class Orm extends Connection
                     if (!$this->checkIfIdExists($dataObject)) Services::servicesMethod();
                     $param = '';
                     $value = '';
+                    $this->connection->beginTransaction();
                     if ($this->table === 'users' && isset($dataObject->username)) {
                         $query = "DELETE FROM $this->table WHERE username=:username";
                         $param = ':username';
@@ -304,14 +312,17 @@ class Orm extends Connection
                         $param = ':id';
                         $value = $dataObject->id;
                     } else {
+                        $this->connection->rollBack();
                         Services::servicesMethod();
                     }
                     $stmt = $this->connection->prepare($query);
 
                     $stmt->bindValue("$param", $value, PDO::PARAM_STR);
                     $stmt->execute();
+                    $this->connection->commit();
                     Services::insertionOK();
                 } catch (PDOException $ex) {
+                    $this->connection->rollBack();
                     Logs::logger('Error al borrar en la BD', 'debug');
                     die("Failed to clear database log. Message: " . $ex->getMessage());
                 }
