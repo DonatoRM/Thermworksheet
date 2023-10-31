@@ -3,11 +3,12 @@ import {
 	createContext,
 	useCallback,
 	useContext,
+	useEffect,
 	useMemo,
 	useState
 } from 'react';
 
-const AUTH_TOKENS_KEY = 'AUTHENTICATION_FRONTEND';
+const AUTH_TOKENS_KEY = 'authToken';
 export const AuthContext = createContext({
 	login: data => {},
 	logout: () => {},
@@ -15,10 +16,14 @@ export const AuthContext = createContext({
 	authToken: null
 });
 const AuthContextProvider = ({ children }) => {
-	const authTokenInMemory = window.localStorage.getItem(AUTH_TOKENS_KEY);
-	const [authToken, setAuthToken] = useState(
-		authTokenInMemory === null ? null : JSON.parse(authTokenInMemory)
-	);
+	const [authTokenInMemory, setAuthTokenInMemory] = useState(null);
+	useEffect(() => {
+		const authTokenInMemory = localStorage.getItem(AUTH_TOKENS_KEY);
+		setAuthTokenInMemory(authTokenInMemory);
+	}, [authTokenInMemory]);
+	const [authToken, setAuthToken] = useState(() => {
+		return authTokenInMemory === null ? null : JSON.parse(authTokenInMemory);
+	});
 	const login = useCallback(function (authToken) {
 		window.localStorage.setItem(AUTH_TOKENS_KEY, JSON.stringify(authToken));
 		setAuthToken(authToken);
@@ -40,5 +45,7 @@ const AuthContextProvider = ({ children }) => {
 };
 export default AuthContextProvider;
 export const useAuthContext = () => {
-	return useContext(AuthContext);
+	const context = useContext(AuthContext);
+	if (!context) throw new Error('useTasks must used within a provider');
+	return context;
 };

@@ -4,24 +4,26 @@ import { useAuthContext } from '@/contexts/authContext';
 import { useRouter } from 'next/navigation';
 
 const Home = () => {
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+	const { username, password, setUsername, setPassword } = useLogin();
 	const router = useRouter();
-	const { login } = useAuthContext();
+	const { login, isLogged, authToken } = useAuthContext();
+	let authWithType = 'Basic ' + btoa(username + ':' + password);
+	console.log(isLogged, authToken);
+	if (isLogged) {
+		authWithType = 'Bearer ' + authToken;
+	}
 	const handleLoginSubmit = async event => {
 		event.preventDefault();
 		const response = await fetch('http://localhost', {
 			headers: {
-				// Authorization:
-				// 	'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiaWF0IjoxNjk4MzQyMTA0LCJuYmYiOjE2OTgzNDIxMDQsImV4cCI6MTY5ODM0NTcwNCwidXNlcm5hbWUiOiJib3NzIiwicGFzc3dvcmQiOiJib3NzIn0.vODHHejvKSoY32XqKy2NbtaApaLT91zvmgWj-tkhgN8'
-				Authorization: 'Basic ' + btoa(username + ':' + password)
+				Authorization: authWithType
 			}
 		});
 		if (!response.ok) {
 			return console.log('Error');
 		}
-		const role = await response.json();
-		login(role);
+		const objAuthentication = await response.json();
+		login(objAuthentication.authToken);
 		// todo: controlar la página que se abrirá según sea el role del usuario validado. suponemos inicialmente que es 3 (boss)
 		return router.push('/data');
 	};
@@ -60,4 +62,27 @@ const Home = () => {
 	);
 };
 
+const useLogin = () => {
+	const [login, setLogin] = useState({
+		username: '',
+		password: ''
+	});
+	const setUsername = newUsername => {
+		setLogin({
+			...login,
+			username: newUsername
+		});
+	};
+	const setPassword = newPassword => {
+		setLogin({
+			...login,
+			password: newPassword
+		});
+	};
+	return {
+		...login,
+		setUsername,
+		setPassword
+	};
+};
 export default Home;

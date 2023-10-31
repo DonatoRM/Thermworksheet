@@ -1,8 +1,11 @@
-import { Inter } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import '../styles/globals.css';
 import AuthContextProvider from '@/contexts/authContext';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+	weight: ['200', '400', '600', '800'],
+	subsets: ['latin']
+});
 
 export const metadata = {
 	title: 'Thermworksheet',
@@ -13,7 +16,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
 	return (
 		<html lang='es'>
-			<body className={inter.className}>
+			<body className={poppins.className}>
 				<AuthContextProvider>{children}</AuthContextProvider>
 			</body>
 		</html>
