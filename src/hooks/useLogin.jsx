@@ -2,7 +2,8 @@ import { useState } from 'react';
 const useLogin = () => {
 	const [login, setLogin] = useState({
 		username: '',
-		password: ''
+		password: '',
+		error: ''
 	});
 	const setUsername = newUsername => {
 		setLogin({
@@ -16,10 +17,17 @@ const useLogin = () => {
 			password: newPassword
 		});
 	};
+	const setError = newError => {
+		setLogin({
+			...login,
+			error: newError
+		});
+	};
 	return {
 		...login,
 		setUsername,
-		setPassword
+		setPassword,
+		setError
 	};
 };
 export default useLogin;

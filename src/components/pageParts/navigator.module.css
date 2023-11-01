@@ -1,0 +1,32 @@
+.nav {
+    background-color: var(--color-gray);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 0.5rem var(--color-gray);
+    border-radius: var(--radius-md);
+}
+.nav button:focus {
+    color: var(--color-purple);
+}
+.nav input:focus {
+    background-color:var(--color-purple);
+}
+.options {
+    display: flex;
+    padding: 0.5rem;
+    gap:0.25rem
+}
+.search {
+    padding: 0.25rem 0.5rem 0 0;
+    display: flex;
+    gap:0.25rem;
+
+}
+.exit {
+    margin-top: 0.25rem;
+    background-color: var(--color-red);
+}
+.exit:hover {
+    color: var(--color-red);
+}

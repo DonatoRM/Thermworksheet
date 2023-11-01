@@ -7,7 +7,8 @@ import InputText from '@/components/forms/InputText';
 import Button from '@/components/buttons/Button';
 
 const Home = () => {
-	const { username, password, setUsername, setPassword } = useLogin();
+	const { username, password, setUsername, setPassword, error, setError } =
+		useLogin();
 	const router = useRouter();
 	const { login, isLogged, authToken, addRole } = useAuthContext();
 	let authWithType = 'Basic ' + btoa(username + ':' + password);
@@ -22,7 +23,8 @@ const Home = () => {
 			}
 		});
 		if (!response.ok) {
-			return console.log('Error');
+			setError('Error de Autenticación');
+			return;
 		}
 		const objAuthentication = await response.json();
 		login(objAuthentication.authToken);
@@ -45,7 +47,8 @@ const Home = () => {
 			}
 		});
 		if (!response.ok) {
-			return console.log('Error');
+			setError('Error de Autenticación');
+			return;
 		}
 		const objAuthentication = await response.json();
 		login(objAuthentication.authToken);
@@ -67,7 +70,11 @@ const Home = () => {
 	return (
 		<main className={style.main}>
 			<section>
-				<form onSubmit={handleLoginSubmit} className={style.form}>
+				<form
+					onSubmit={handleLoginSubmit}
+					className={style.form}
+					autoComplete='off'
+				>
 					<header>
 						<h2 className={style.title}>Login</h2>
 					</header>
@@ -97,6 +104,7 @@ const Home = () => {
 					</div>
 				</form>
 			</section>
+			<section className={style.error}>{error}</section>
 		</main>
 	);
 };
